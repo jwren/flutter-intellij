@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/tool/plugin/build" />
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
@@ -8,6 +9,13 @@
       <excludeFolder url="file://$MODULE_DIR$/tool/plugin/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter-idea/build/resources/test/sample_tests/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter-idea/build/resources/test/sample_tests/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter-idea/build/resources/test/sample_tests/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter-idea/testData/sample_tests/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter-idea/testData/sample_tests/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter-idea/testData/sample_tests/build" />
     </content>
+    <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
