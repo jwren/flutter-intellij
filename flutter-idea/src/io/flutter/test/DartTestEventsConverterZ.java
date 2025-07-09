@@ -90,7 +90,7 @@ public class DartTestEventsConverterZ extends OutputToGeneralTestEventsConverter
   private String myLocation;
   private Key myCurrentOutputType;
   private ServiceMessageVisitor myCurrentVisitor;
-  private final HashMap myTestIdToTimestamp;
+  private final HashMap<Integer, Long> myTestIdToTimestamp;
   private final Map<Integer, Test> myTestData;
   private final Map<Integer, Group> myGroupData;
   private final Map<Integer, Suite> mySuiteData;
@@ -101,7 +101,7 @@ public class DartTestEventsConverterZ extends OutputToGeneralTestEventsConverter
                                   @NotNull final DartUrlResolver urlResolver) {
     super(testFrameworkName, consoleProperties);
     myUrlResolver = urlResolver;
-    myTestIdToTimestamp = new HashMap();
+    myTestIdToTimestamp = new HashMap<>();
     myTestData = new HashMap<>();
     myGroupData = new HashMap<>();
     mySuiteData = new HashMap<>();
@@ -192,6 +192,7 @@ public class DartTestEventsConverterZ extends OutputToGeneralTestEventsConverter
 
     // Not reached if testObj == null.
     final Test test = getTest(obj);
+    assert myTestIdToTimestamp != null;
     myTestIdToTimestamp.put(test.getId(), getTimestamp(obj));
 
     if (shouldTestBeHiddenIfPassed(test)) {
