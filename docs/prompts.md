@@ -54,3 +54,21 @@
 6.  **Create a PR**:
     *   Use a commit message like: "Update org.jetbrains.intellij.platform to <VERSION>"
     *   You can point to https://github.com/flutter/dart-intellij-third-party/pull/167 as an example of a similar PR.
+
+---
+
+## Prompt 4: Optimize Collections with SmartList
+**Objective:** Identify and refactor `List` instantiations to `com.intellij.util.SmartList` to reduce memory footprint for small collections.
+
+**Instructions:**
+1.  **Identify Candidates:** Search for `new ArrayList<>()` usages. Focus on collections that:
+    *   Are frequently instantiated.
+    *   Typically contain 0 or 1 element (e.g., listeners, single-child parents, sparse properties).
+    *   Are distinct from high-volume, data-heavy lists (where `ArrayList` might be better or equal).
+2.  **Refactor:**
+    *   Replace `new ArrayList<>()` with `new SmartList<>()` (requires `import com.intellij.util.SmartList;`).
+    *   **Crucial:** Change the variable/field type to `List<T>` interface if it's currently `ArrayList<T>`. This decouples the implementation.
+3.  **Check for Incompatibilities:** ensure no `ArrayList`-specific methods (like `trimToSize` or `ensureCapacity`) are being called, or replace them with equivalent logic if needed (though `SmartList` usually handles small lists automatically without manual trimming).
+4.  **Verify:**
+    *   Run tests (`./gradlew test`) to ensure no regressions.
+    *   Verify that the code compiles and imports are correct.
