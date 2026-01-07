@@ -29,7 +29,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
+import com.intellij.util.SmartList;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedHashMap;
@@ -483,7 +483,7 @@ public class DaemonApi {
         return Collections.emptyList();
       }
 
-      final List<String> platforms = new ArrayList<>();
+      final List<String> platforms = new SmartList<>();
 
       for (int i = 0; i < ((JsonArray)obj).size(); i++) {
         final JsonElement element = ((JsonArray)obj).get(i);

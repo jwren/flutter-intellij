@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import java.util.ArrayList;
+import com.intellij.util.SmartList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -97,7 +97,7 @@ public class DeviceService {
    */
   public void addListener(@NotNull Runnable callback) {
     listeners.updateAndGet((old) -> {
-      final List<Runnable> changed = new ArrayList<>(old);
+      final List<Runnable> changed = new SmartList<>(old);
       changed.add(callback);
       return ImmutableSet.copyOf(changed);
     });
@@ -105,7 +105,7 @@ public class DeviceService {
 
   public void removeListener(@NotNull Runnable callback) {
     listeners.updateAndGet((old) -> {
-      final List<Runnable> changed = new ArrayList<>(old);
+      final List<Runnable> changed = new SmartList<>(old);
       changed.remove(callback);
       return ImmutableSet.copyOf(changed);
     });

@@ -44,7 +44,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import com.intellij.util.SmartList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -124,7 +124,7 @@ class DevToolsServerTask extends Task.Backgroundable {
     final DartToolingDaemonService dtdService = dtdUtils.readyDtdService(project).get();
     final String dtdUri = dtdService.getUri();
 
-    final List<String> args = new ArrayList<>();
+    final List<String> args = new SmartList<>();
     args.add("serve");
     args.add("--machine");
     args.add("--dtd-uri=" + dtdUri);

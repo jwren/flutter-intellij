@@ -38,7 +38,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import com.intellij.util.SmartList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.CancellationException;
@@ -426,7 +426,7 @@ class DeviceDaemon {
     // helpers
 
     private static ImmutableList<FlutterDevice> addDevice(Stream<FlutterDevice> old, FlutterDevice newDevice) {
-      final List<FlutterDevice> changed = new ArrayList<>(removeDevice(old, newDevice.deviceId()));
+      final List<FlutterDevice> changed = new SmartList<>(removeDevice(old, newDevice.deviceId()));
       changed.add(newDevice);
       changed.sort(Comparator.comparing(FlutterDevice::deviceName));
       return ImmutableList.copyOf(changed);

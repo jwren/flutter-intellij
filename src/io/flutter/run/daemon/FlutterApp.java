@@ -61,7 +61,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
+import com.intellij.util.SmartList;
 import java.util.EventListener;
 import java.util.HashMap;
 import java.util.List;
@@ -198,7 +198,7 @@ public class FlutterApp implements Disposable {
 
   @NotNull
   public static List<FlutterApp> allFromProjectProcess(@NotNull Project project) {
-    final List<FlutterApp> allRunningApps = new ArrayList<>();
+    final List<FlutterApp> allRunningApps = new SmartList<>();
     final List<RunContentDescriptor> runningProcesses =
       RunContentManager.getInstance(project).getAllDescriptors();
     for (RunContentDescriptor descriptor : runningProcesses) {
