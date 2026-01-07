@@ -54,3 +54,24 @@
 6.  **Create a PR**:
     *   Use a commit message like: "Update org.jetbrains.intellij.platform to <VERSION>"
     *   You can point to https://github.com/flutter/dart-intellij-third-party/pull/167 as an example of a similar PR.
+
+---
+
+## Prompt 4: Performance Optimization - SmartList Refactoring
+**Objective:** Optimize memory usage by replacing `ArrayList` with `SmartList` in packages where lists typically contain 0 or 1 elements.
+
+**Instructions:**
+1.  **Scope - Package by Package:** Instead of refactoring single files or the entire repo at once, work one package (directory) at a time (e.g., `io.flutter.actions`, `io.flutter.run`).
+2.  **Branch Naming Rules:**
+    *   Create a new branch for each package.
+    *   Use the naming convention: `smart-list-<SEQUENCE>-<PACKAGE_NAME>` (e.g., `smart-list-01-actions`, `smart-list-02-run`).
+    *   Target `main` as the base branch.
+3.  **Refactoring Steps:**
+    *   **Analyze:** Identify fields or variables in the package that use `ArrayList` but likely hold 0-1 items.
+    *   **Modify:** Change `new ArrayList<>()` to `new SmartList<>()` and update imports (`import com.intellij.util.SmartList;`).
+    *   **Verify:** Run `./gradlew compileJava` to ensure no compilation errors.
+4.  **Push:**
+    *   `git add .`
+    *   `git commit -m "Refactor <PACKAGE_NAME> to use SmartList"`
+    *   `git push origin <BRANCH_NAME>`
+5.  **Repeat:** Switch back to `main`, pull the latest changes, and proceed to the next package.
